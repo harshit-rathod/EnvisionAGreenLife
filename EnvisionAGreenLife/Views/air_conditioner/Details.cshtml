@@ -1,0 +1,236 @@
+﻿@using MvcBreadCrumbs
+@model EnvisionAGreenLife.Models.air_conditioner
+
+@{ var SpList = ViewData["SimilarProducts"] as List<EnvisionAGreenLife.Models.air_conditioner>;}
+
+
+@{
+    ViewBag.Title = "Air Conditioner Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@* this page contains the view logic for the air conditioner details page design *@
+<div class="page-title-section">
+    <div class="container">
+        <h1 class="page-title">@Model.Brand - @Model.Model_No</h1>
+    </div>
+</div>
+
+<div class="breadcrum" style="margin-left:10%">
+    @Html.Raw(BreadCrumb.Display())
+</div>
+
+@* code to display the different airconditioner in a grid of cards consiting images and model number of AC *@
+<div class="section-3" style="margin-top:40px">
+    <div class="w-row">
+        <div class="w-col w-col-6">
+            <div class="appliance-detail-image-wrapper">
+                @if (Model.Air_Conditioner_Id % 9 == 1)
+                {
+                    <img src='@Url.Content("~/Images/air_conditioner1.png")' alt="Air_conditioner" class="appliance-card-image" style="width:80%; border-color:transparent;" />
+                }
+                else
+                if (Model.Air_Conditioner_Id % 9 == 2)
+                {
+                    <img src='@Url.Content("~/Images/air_conditioner2.png")' alt="Air_conditioner" class="appliance-card-image" style="width:80%; border-color:transparent;" />
+                }
+                else
+                if (Model.Air_Conditioner_Id % 9 == 3)
+                {
+                    <img src='@Url.Content("~/Images/air_conditioner3.png")' alt="Air_conditioner" class="appliance-card-image" style="width:80%; border-color:transparent;" />
+                }
+                else
+                if (Model.Air_Conditioner_Id % 9 == 4)
+                {
+                    <img src='@Url.Content("~/Images/air_conditioner4.png")' alt="Air_conditioner" class="appliance-card-image" style="width:80%; border-color:transparent;" />
+                }
+                else
+                if (Model.Air_Conditioner_Id % 9 == 5)
+                {
+                    <img src='@Url.Content("~/Images/air_conditioner5.png")' alt="Air_conditioner" class="appliance-card-image" style="width:80%; border-color:transparent;" />
+                }
+                else
+                if (Model.Air_Conditioner_Id % 9 == 6)
+                {
+                    <img src='@Url.Content("~/Images/air_conditioner6.png")' alt="Air_conditioner" class="appliance-card-image" style="width:80%; border-color:transparent;" />
+                }
+                else
+                if (Model.Air_Conditioner_Id % 9 == 7)
+                {
+                    <img src='@Url.Content("~/Images/air_conditioner7.png")' alt="Air_conditioner" class="appliance-card-image" style="width:80%; border-color:transparent;" />
+                }
+                else
+                if (Model.Air_Conditioner_Id % 9 == 8)
+                {
+                    <img src='@Url.Content("~/Images/air_conditioner8.png")' alt="Air_conditioner" class="appliance-card-image" style="width:80%; border-color:transparent;" />
+                }
+                else
+                if (Model.Air_Conditioner_Id % 9 == 0)
+                {
+                    <img src='@Url.Content("~/Images/air_conditioner9.png")' alt="Air_conditioner" class="appliance-card-image" style="width:80%; border-color:transparent;" />
+                }
+            </div>
+        </div>
+
+        @* code to display the details of the selected AC with collapse-able specification. *@
+        <div class="column-6 w-col w-col-6" style="padding-top: 0px;">
+            <p class="paragraph-3"><b>@Model.Brand @Model.C_Dehumid_Rated KW @Model.Configuration1 @Model.Configuration2 Air conditioner</b></p>
+            <p class="paragraph-3" style="font-size: 30px; text-align: center;">Energy Rating - Cooling: @Model.Star2010_Cool</p>
+            <p class="paragraph-3" style="font-size: 30px; text-align: center;">Energy Rating - Heating: @Model.Star2010_Heat</p>
+            <hr />
+            <p class="paragraph-2" style="text-align:justify">
+                <strong>AIR CONDITONER DESCRIPTION:<br></strong>Keeping a relaxed home environment shouldn’t cost the world. This @Model.Brand @Model.C_Total_Cool_Rated KW
+                @Model.Type Air Conditioner is perfect for smaller rooms in your home
+                and offers convenient solutions with its 3D Airflow for evenly distributed air.
+                Cool or heat with cleaner air thanks to the high-density filter which has @Model.COPtestAvg times more holes
+                to trap unwanted particles. For your convenience, you can even control the air conditioner
+                remotely via your smartphone.
+            </p>
+            <hr />
+            <div class="accordion-wrapper">
+                <div class="accordion-item">
+                    <div class="accordion-item-trigger">
+                        <h4 class="heading-7">Specification                        +</h4>
+                    </div>
+                    <div class="accordion-item-content">
+                        <dl class="dl-horizontal">
+                            <dt>
+                                Model number
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Model_No)
+                            </dd>
+
+                            <dt>
+                                Brand
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Brand)
+                            </dd>
+
+                            <dt>
+                                Made in
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Country)
+                            </dd>
+
+                            <dt>
+                                Cooling capacity (KW)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.C_Total_Cool_Rated)
+                            </dd>
+
+                            <dt>
+                                Heating capacity (KW)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.H_Total_Heat_Rated)
+                            </dd>
+
+                            <dt>
+                                Sold in
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Sold_in)
+                            </dd>
+
+                            <dt>
+                                Product website
+                            </dt>
+
+                            <dd>
+
+                                <a href="@Model.Product_Website" target="_blank">@Model.Product_Website </a>
+                            </dd>
+
+                            <dt>
+                                Brand Url
+                            </dt>
+
+                            <dd>
+                                <a href="@Model.Representative_Brand_URL" target="_blank">@Model.Representative_Brand_URL </a>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* code to show the similar products in grid of cards using the logic from the controller class. *@
+<div>
+    <h2 class="heading-5">Review Similar Products</h2>
+    <div class="container">
+        <div class="w-row">
+
+            @foreach (var item in SpList)
+            {
+                <div class="w-col w-col-4">
+                    <div class="appliance-card">
+                        <a href='@Url.Action("Details", "air_conditioner",new { id = @item.Air_Conditioner_Id})'>
+                            @if (item.Air_Conditioner_Id % 9 == 1)
+                            {
+                                <img src='@Url.Content("~/Images/air_conditioner1.png")' alt="Air_conditioner" class="appliance-card-image" />
+                            }
+                            else
+                            if (item.Air_Conditioner_Id % 9 == 2)
+                            {
+                                <img src='@Url.Content("~/Images/air_conditioner2.png")' alt="Air_conditioner" class="appliance-card-image" />
+                            }
+                            else
+                            if (item.Air_Conditioner_Id % 9 == 3)
+                            {
+                                <img src='@Url.Content("~/Images/air_conditioner3.png")' alt="Air_conditioner" class="appliance-card-image" />
+                            }
+                            else
+                            if (item.Air_Conditioner_Id % 9 == 4)
+                            {
+                                <img src='@Url.Content("~/Images/air_conditioner4.png")' alt="Air_conditioner" class="appliance-card-image" />
+                            }
+                            else
+                            if (item.Air_Conditioner_Id % 9 == 5)
+                            {
+                                <img src='@Url.Content("~/Images/air_conditioner5.png")' alt="Air_conditioner" class="appliance-card-image" />
+                            }
+                            else
+                            if (item.Air_Conditioner_Id % 9 == 6)
+                            {
+                                <img src='@Url.Content("~/Images/air_conditioner6.png")' alt="Air_conditioner" class="appliance-card-image" />
+                            }
+                            else
+                            if (item.Air_Conditioner_Id % 9 == 7)
+                            {
+                                <img src='@Url.Content("~/Images/air_conditioner7.png")' alt="Air_conditioner" class="appliance-card-image" />
+                            }
+                            else
+                            if (item.Air_Conditioner_Id % 9 == 8)
+                            {
+                                <img src='@Url.Content("~/Images/air_conditioner8.png")' alt="Air_conditioner" class="appliance-card-image" />
+                            }
+                            else
+                            if (item.Air_Conditioner_Id % 9 == 0)
+                            {
+                                <img src='@Url.Content("~/Images/air_conditioner9.png")' alt="Air_conditioner" class="appliance-card-image" />
+                            }
+                        </a>
+                        <button onclick="location.href='@Url.Action("Details", "air_conditioner",new { id = @item.Air_Conditioner_Id })'" type="button" class="appliance-card-but w-button" style="height:100px;">
+                            @item.Brand: @item.Model_No
+                        </button>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+
+

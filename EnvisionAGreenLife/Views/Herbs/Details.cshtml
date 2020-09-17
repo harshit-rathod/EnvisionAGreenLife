@@ -1,0 +1,167 @@
+﻿@model EnvisionAGreenLife.Models.Herb
+@using MvcBreadCrumbs
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@* logic to diplay various herbs we offer with names linking the various details related to each from the database*@
+
+<style>
+    .herb-description {
+        text-align: justify;
+    }
+</style>
+
+<body>
+    <div class="page-title-section">
+        <div class="container">
+            <h1 class="page-title">@Model.Herb_Categories</h1>
+        </div>
+    </div>
+
+    <div class="breadcrum" style="margin-left:10%">
+        @Html.Raw(BreadCrumb.Display())
+    </div>
+
+    <div class="section-2">
+        <div class="herb-column w-row">
+            <div class="herb-column1 w-col w-col-4 w-col-stack">
+                <div class="herb-image-wrapper">
+                    @if (Model.Herb_Id == 1)
+                    {
+                        <img src="~/Images/Basil.png" alt="Basil" class="herb-image">
+                    }
+                    else
+                    if (Model.Herb_Id == 2)
+                    {
+                        <img src="~/Images/parsley.png" alt="Parsley" class="herb-image">
+                    }
+                    else
+                    if (Model.Herb_Id == 3)
+                    {
+                        <img src="~/Images/Rosemary.png" alt="Rosemary" class="herb-image">
+                    }
+                    else
+                    if (Model.Herb_Id == 4)
+                    {
+                        <img src="~/Images/Sage.png" alt="Sage" class="herb-image">
+                    }
+                    else
+                    if (Model.Herb_Id == 5)
+                    {
+                        <img src="~/Images/Thyme.png" alt="Thyme" class="herb-image">
+                    }
+                    else
+                    if (Model.Herb_Id == 6)
+                    {
+                        <img src="~/Images/Chives.png" alt="Chives" class="herb-image">
+                    }
+                </div>
+            </div>
+            <div class="herb-column2 w-col w-col-8 w-col-stack">
+                <h2 class="herb-heading">Herb Information</h2>
+                @if (Model.Herb_Id == 1)
+                {
+            <p class="herb-description">
+                Basil is an easy to grow and fragrant herb that is one of the most common herbs in people’s kitchen bench. This herb pairs nicely with tomato dishes as well as garlic flavour with a bit of lemon zest. We provide link on where to buy the seeds, want to know more about cooking with basil? Check out our food recipe section too.
+            </p>
+                }
+                else
+                   if (Model.Herb_Id == 2)
+                {
+            <p class="herb-description">
+                Fun fact, parsley has a vibrant smell that can mask garlic breath. In Italian dishes, they are a staple to ensure your guests are impressed with your pasta and meat dishes. We provide link on where to buy the seeds, want to know more about cooking with parsley? Check out our food recipe section too.
+            </p>
+                }
+                else
+                   if (Model.Herb_Id == 3)
+                {
+            <p class="herb-description">
+                Rosemary is a beautiful perennial plant with a needle-like leaves. The herb pairs well with lamb and meaty flavours. The flowers are small lavender blue can attract bees from time to time. We provide link on where to buy the seeds, want to know more about cooking with rosemary? Check out our food recipe section too.
+            </p>
+                }
+                else
+                   if (Model.Herb_Id == 4)
+                {
+            <p class="herb-description">
+                Sage has a beautiful aroma and flowers. The herb is commonly used in salads and can pair extremely well with pork and poultry. Don’t hesitate to even put it in your breakfast eggs. We provide link on where to buy the seeds, want to know more about cooking with sage? Check out our food recipe section too.
+            </p>
+                }
+                else
+                   if (Model.Herb_Id == 5)
+                {
+            <p class="herb-description">
+                Thyme is commonly used in flavouring the stock, pastry stuffing as well as sauces for pasta. Thyme is quite tolerable plant with very minimal attention needed even if you haven’t got much ‘thyme’. We provide link on where to buy the seeds, want to know more about cooking with thyme? Check out our food recipe section too.
+            </p>
+                }
+                else
+                   if (Model.Herb_Id == 6)
+                {
+            <p class="herb-description">
+                Chives are versatile herb that is commonly used to garnish dish with eggs, chicken and fish. The flavour is mild and pairs nicely with onion and garlic. More importantly, they look stunning in your garden and have beautiful flowers too. We provide link on where to buy the seeds, want to know more about cooking with chives? Check out our food recipe section too.
+            </p>
+                }
+                <div class="herb-property-container w-container">
+                    <div class="herb-property-columns w-row">
+                        <div class="herb-property-column w-col w-col-3 w-col-stack">
+                            <div class="herb-property">
+                                @if (Model.Difficulty == "Easy")
+                                {
+                                    <img src="~/Images/Easy.png" width="100" height="100" alt="Easy">
+                                    <p style=" padding-right:5px;">Easy</p>
+                                }
+                                else
+                                    if (Model.Difficulty == "intermediate")
+                                {
+                                    <img src="~/Images/intermediate.png" width="100" height="100" alt="intermediate">
+                                    <p style=" padding-right:5px;">Intermediate</p>
+                                }
+                                else
+                                    if (Model.Difficulty == "Challenging")
+                                {
+                                    <img src="~/Images/challenging.png" width="100" height="100" alt="challenging">
+                                    <p style="padding-right:5px;">Challenging</p>
+                                }
+                            </div>
+                        </div>
+                        <div class="herb-property-column w-col w-col-3 w-col-stack">
+                            <div class="herb-property">
+                                <img src="~/Images/soil.png" width="100" height="100" alt="soil">
+                                <p style="padding-left:5px; padding-right:5px;">@Model.Soil_Environment</p>
+                            </div>
+                        </div>
+                        <div class="herb-property-column w-col w-col-3 w-col-stack">
+                            <div class="herb-property">
+                                <img src="~/Images/time.png" width="100" height="100" alt="time">
+                                <p style="padding-left:5px; padding-right:5px;">@Html.Raw(Model.Growing_Time)</p>
+                            </div>
+                        </div>
+                        <div class="herb-property-column w-col w-col-3 w-col-stack">
+                            <div class="herb-property">
+                                <img src="~/Images/shopping.png" width="100" height="100" alt="shopping">
+                                <div><a href="@Model.Where_to_buy" target="_blank" class="herb-shopping-btn w-button">Click to buy seeds</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="herb-step-section">
+        <div class="herb-collapse-container w-container">
+            <div class="accordion-wrapper">
+                <div class="accordion-item">
+                    <div class="accordion-item-trigger">
+                        <h4 class="heading-7" style="text-align:center;">Steps to grow    +</h4>
+                    </div>
+                    <div class="accordion-item-content">
+                        <p>@Html.Raw(Model.Steps)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+

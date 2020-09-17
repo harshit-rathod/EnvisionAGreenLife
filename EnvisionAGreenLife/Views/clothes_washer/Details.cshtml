@@ -1,0 +1,257 @@
+﻿@using MvcBreadCrumbs
+@model EnvisionAGreenLife.Models.clothes_washer
+
+@{ var SpList = ViewData["SimilarProducts"] as List<EnvisionAGreenLife.Models.clothes_washer>;}
+
+
+@{
+    ViewBag.Title = "Washing Machine Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@* this page contains the view logic for the appliance details page design *@
+
+<div class="page-title-section">
+    <div class="container">
+        <h1 class="page-title">@Model.Brand - @Model.Model_No</h1>
+    </div>
+</div>
+
+<div class="breadcrum" style="margin-left:10%">
+    @Html.Raw(BreadCrumb.Display())
+</div>
+
+@* code to display the different appliance in a grid of cards consiting images and model number of AC *@
+
+<div class="section-3" style="margin-top:40px">
+    <div class="w-row">
+        <div class="w-col w-col-6">
+            <div class="appliance-detail-image-wrapper">
+                @if (Model.Clothes_Washer_Id % 9 == 1)
+                {
+                    <img src='@Url.Content("~/Images/cw9.png")' alt="Clothes_washer" class="appliance-card-image" style="width:80%; border-color:transparent;" />
+                }
+                else
+                if (Model.Clothes_Washer_Id % 9 == 2)
+                {
+                    <img src='@Url.Content("~/Images/cw8.png")' alt="Clothes_washer" class="appliance-card-image" style="width:80%; border-color:transparent;" />
+                }
+                else
+                if (Model.Clothes_Washer_Id % 9 == 3)
+                {
+                    <img src='@Url.Content("~/Images/cw7.png")' alt="Clothes_washer" class="appliance-card-image" style="width:80%; border-color:transparent;" />
+                }
+                else
+                if (Model.Clothes_Washer_Id % 9 == 4)
+                {
+                    <img src='@Url.Content("~/Images/cw6.png")' alt="Clothes_washer" class="appliance-card-image" style="width:80%; border-color:transparent;" />
+                }
+                else
+                if (Model.Clothes_Washer_Id % 9 == 5)
+                {
+                    <img src='@Url.Content("~/Images/cw5.png")' alt="Clothes_washer" class="appliance-card-image" style="width:80%; border-color:transparent;" />
+                }
+                else
+                if (Model.Clothes_Washer_Id % 9 == 6)
+                {
+                    <img src='@Url.Content("~/Images/cw4.png")' alt="Clothes_washer" class="appliance-card-image" style="width:80%; border-color:transparent;" />
+                }
+                else
+                if (Model.Clothes_Washer_Id % 9 == 7)
+                {
+                    <img src='@Url.Content("~/Images/cw3.png")' alt="Clothes_washer" class="appliance-card-image" style="width:80%; border-color:transparent;" />
+                }
+                else
+                if (Model.Clothes_Washer_Id % 9 == 8)
+                {
+                    <img src='@Url.Content("~/Images/cw2.png")' alt="Clothes_washer" class="appliance-card-image" style="width:80%; border-color:transparent;" />
+                }
+                else
+                if (Model.Clothes_Washer_Id % 9 == 0)
+                {
+                    <img src='@Url.Content("~/Images/cw1.png")' alt="Clothes_washer" class="appliance-card-image" style="width:80%; border-color:transparent;" />
+                }
+            </div>
+        </div>
+        <div class="column-6 w-col w-col-6" style="padding-top: 0px;">
+            <p class="paragraph-3"><b>@Model.Brand @Model.Cap Kg @Model.Loading Loading Washing Machine</b></p>
+            <p class="paragraph-3" style="font-size: 30px; text-align: center;">Energy Rating: @Model.New_Star</p>
+            <hr />
+            <p class="paragraph-2" style="text-align:justify">
+                <strong>Washing Machine Description:<br></strong> Incorporating SmartDrive™ technology, this innovative Washsmart  @Model.Loading Loader
+                from @Model.Brand provides the greatest care for your clothes in every single
+                wash. With a large @Model.Cap kg capacity, this washer is perfect for large households or families!
+            </p>
+            <hr />
+
+            @* code to display the details of the selected appliance with collapse-able specification. *@
+
+            <div class="accordion-wrapper">
+                <div class="accordion-item">
+                    <div class="accordion-item-trigger">
+                        <h4 class="heading-7">Specification                        +</h4>
+                    </div>
+                    <div class="accordion-item-content">
+                        <dl class="dl-horizontal">
+
+                            <dt>
+                                Brand
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Brand)
+                            </dd>
+
+                            <dt>
+                                Model number
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Model_No)
+                            </dd>
+                            <dt>
+                                Capacity (KG)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Cap)
+                            </dd>
+
+                            <dt>
+                                Energy consumption - cold wash
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.CEC_Cold) kw/Year
+                            </dd>
+
+                            <dt>
+                                Energy consumption - warm wash
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.CEC) kw/Year
+                            </dd>
+
+
+                            <dt>
+                                Code water consumption
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Cold_Wat_Cons) L
+                            </dd>
+
+                            <dt>
+                                Hot water consumption
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Hot_Wat_Cons) L
+                            </dd>
+
+                            <dt>
+                                Made in
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Country)
+                            </dd>
+                            @if (Model.Product_Website != null)
+                            {
+                                <dt>
+                                    Product website
+                                </dt>
+
+                                <dd>
+                                    <a href="@Model.Product_Website" target="_blank">@Model.Product_Website </a>
+                                </dd>
+                            }
+
+                            @if (Model.Representative_Brand_URL != null)
+                            {
+                                <dt>
+                                    Brand URL
+                                </dt>
+
+                                <dd>
+                                    <a href="@Model.Representative_Brand_URL" target="_blank">@Model.Representative_Brand_URL </a>
+                                </dd>
+                            }
+
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* code to show the similar products in grid of cards using the logic from the controller class. *@
+
+<div>
+    <h2 class="heading-5">Review Similar Products</h2>
+    <div class="container">
+        <div class="w-row">
+
+            @foreach (var item in SpList)
+            {
+                <div class="w-col w-col-4">
+                    <div class="appliance-card">
+                        <a href='@Url.Action("Details", "clothes_washer",new { id = @item.Clothes_Washer_Id})'>
+                            @if (item.Clothes_Washer_Id % 9 == 1)
+                            {
+                                <img src='@Url.Content("~/Images/cw9.png")' alt="Clothes_washer" class="appliance-card-image" />
+                            }
+                            else
+                            if (item.Clothes_Washer_Id % 9 == 2)
+                            {
+                                <img src='@Url.Content("~/Images/cw8.png")' alt="Clothes_washer" class="appliance-card-image" />
+                            }
+                            else
+                            if (item.Clothes_Washer_Id % 9 == 3)
+                            {
+                                <img src='@Url.Content("~/Images/cw7.png")' alt="Clothes_washer" class="appliance-card-image" />
+                            }
+                            else
+                            if (item.Clothes_Washer_Id % 9 == 4)
+                            {
+                                <img src='@Url.Content("~/Images/cw6.png")' alt="Clothes_washer" class="appliance-card-image" />
+                            }
+                            else
+                            if (item.Clothes_Washer_Id % 9 == 5)
+                            {
+                                <img src='@Url.Content("~/Images/cw5.png")' alt="Clothes_washer" class="appliance-card-image" />
+                            }
+                            else
+                            if (item.Clothes_Washer_Id % 9 == 6)
+                            {
+                                <img src='@Url.Content("~/Images/cw4.png")' alt="Clothes_washer" class="appliance-card-image" />
+                            }
+                            else
+                            if (item.Clothes_Washer_Id % 9 == 7)
+                            {
+                                <img src='@Url.Content("~/Images/cw3.png")' alt="Clothes_washer" class="appliance-card-image" />
+                            }
+                            else
+                            if (item.Clothes_Washer_Id % 9 == 8)
+                            {
+                                <img src='@Url.Content("~/Images/cw2.png")' alt="Clothes_washer" class="appliance-card-image" />
+                            }
+                            else
+                            if (item.Clothes_Washer_Id % 9 == 0)
+                            {
+                                <img src='@Url.Content("~/Images/cw1.png")' alt="Clothes_washer" class="appliance-card-image" />
+                            }
+                        </a>
+                        <button onclick="location.href='@Url.Action("Details", "clothes_washer",new { id = @item.Clothes_Washer_Id })'" type="button" class="appliance-card-but w-button" style="height:100px;">
+                            @item.Brand: @item.Model_No
+                        </button>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+

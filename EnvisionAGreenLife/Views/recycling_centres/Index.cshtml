@@ -1,0 +1,110 @@
+﻿@model IEnumerable<EnvisionAGreenLife.Models.recycling_centres>
+@using MvcBreadCrumbs
+
+@{
+    ViewBag.Title = "Recycling Centre";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    #geocoder-container > div {
+        min-width: 50%;
+        margin-left: 25%;
+    }
+
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+
+<div class="page-title-section">
+    <div class="container">
+        <h1 class="page-title">Recycling Centre Map</h1>
+    </div>
+</div>
+<div class="breadcrum" style="margin-left:10%">
+    @Html.Raw(BreadCrumb.Display())
+</div>
+<h2 class="heading-5" style="margin: 10px 120px;">Find places to recycle near</h2>
+
+<p style="text-align:center;">
+    If you are ready to recycle, but do not know where you can go, then search it in the map.
+</p>
+
+<div class="section-4" ">
+    <div class="container">
+        <div class="w-row">
+            <div class="w-col w-col-6" style="margin-top:3%;">
+                <table>
+                    <tr>
+                        <th>
+                            Recycling Centre Address
+                        </th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="Address">
+                                @Html.DisplayFor(modelItem => item.Address)
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+
+            <div class="w-col w-col-6" style="margin-top:3%;">
+                <div class="div-block-3">
+                    <div id="map" style="height:950px"></div>
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<table class="table" style="display:none;">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lattitude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Longitude)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr class="coordinates">
+            <td class="Address">
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td class="Latitude">
+                @Html.DisplayFor(modelItem => item.Lattitude)
+            </td>
+            <td class="Longitude">
+                @Html.DisplayFor(modelItem => item.Longitude)
+            </td>
+        </tr>
+    }
+</table>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/mapbox")
+}

@@ -1,0 +1,254 @@
+﻿@using MvcBreadCrumbs
+@model EnvisionAGreenLife.Models.monitor
+
+@{ var SpList = ViewData["SimilarProducts"] as List<EnvisionAGreenLife.Models.monitor>;}
+
+
+@{
+    ViewBag.Title = "Monitor Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@* this page contains the view logic for the appliance details page design *@
+<div class="page-title-section">
+    <div class="container">
+        <h1 class="page-title">@Model.Brand_Name - @Model.Model_Number</h1>
+    </div>
+</div>
+
+<div class="breadcrum" style="margin-left:10%">
+    @Html.Raw(BreadCrumb.Display())
+</div>
+
+@* code to display the different appliance in a grid of cards consiting images and model number of AC *@
+<div class="section-3" style="margin-top:40px">
+    <div class="w-row">
+        <div class="w-col w-col-6">
+            <div class="appliance-detail-image-wrapper">
+                @if (Model.Monitor_Id % 9 == 1)
+                {
+                    <img src='@Url.Content("~/Images/monitor1.png")' alt="Monitor" class="appliance-card-image" style="width:80%; border-color:transparent;" />
+                }
+                else
+                if (Model.Monitor_Id % 9 == 2)
+                {
+                    <img src='@Url.Content("~/Images/monitor2.png")' alt="Monitor" class="appliance-card-image" style="width:80%; border-color:transparent;" />
+                }
+                else
+                if (Model.Monitor_Id % 9 == 3)
+                {
+                    <img src='@Url.Content("~/Images/monitor3.png")' alt="Monitor" class="appliance-card-image" style="width:80%; border-color:transparent;" />
+                }
+                else
+                if (Model.Monitor_Id % 9 == 4)
+                {
+                    <img src='@Url.Content("~/Images/monitor4.png")' alt="Monitor" class="appliance-card-image" style="width:80%; border-color:transparent;" />
+                }
+                else
+                if (Model.Monitor_Id % 9 == 5)
+                {
+                    <img src='@Url.Content("~/Images/monitor5.png")' alt="Monitor" class="appliance-card-image" style="width:80%; border-color:transparent;" />
+                }
+                else
+                if (Model.Monitor_Id % 9 == 6)
+                {
+                    <img src='@Url.Content("~/Images/monitor6.png")' alt="Monitor" class="appliance-card-image" style="width:80%; border-color:transparent;" />
+                }
+                else
+                if (Model.Monitor_Id % 9 == 7)
+                {
+                    <img src='@Url.Content("~/Images/monitor7.png")' alt="Monitor" class="appliance-card-image" style="width:80%; border-color:transparent;" />
+                }
+                else
+                if (Model.Monitor_Id % 9 == 8)
+                {
+                    <img src='@Url.Content("~/Images/monitor8.png")' alt="Monitor" class="appliance-card-image" style="width:80%; border-color:transparent;" />
+                }
+                else
+                if (Model.Monitor_Id % 9 == 0)
+                {
+                    <img src='@Url.Content("~/Images/monitor9.png")' alt="Monitor" class="appliance-card-image" style="width:80%; border-color:transparent;" />
+                }
+            </div>
+        </div>
+
+        @* code to display the details of the selected appliance with collapse-able specification. *@
+
+        <div class="column-6 w-col w-col-6" style="padding-top: 0px;">
+            <p class="paragraph-3"><b>@Model.Brand_Name @Model.Screen_Size" @Model.Screen_Technology Monitor</b></p>
+            <p class="paragraph-3" style="font-size: 30px; text-align: center;">Energy Rating: @Model.Star_Rating</p>
+            <hr />
+            <p class="paragraph-2" style="text-align:justify">
+                <strong>Monitor Description:<br></strong>Elevate your home entertainment with this @Model.Brand_Name @Model.Screen_Size" @Model.Screen_Technology Monitor.
+                Watch and enjoy vivid colours and clearer detail thanks to the
+                Quad Core Processor 4K and watch movies like the director intended
+                with the unique Film Maker Mode™. The wide viewing angle on this Monitor
+                makes it simple to enjoy your content clearly, no matter what seat you have
+                in the room. Available in a wide range of screen sizes, this Monitor will fit in any space in your home.
+            </p>
+            <hr />
+            <div class="accordion-wrapper">
+                <div class="accordion-item">
+                    <div class="accordion-item-trigger">
+                        <h4 class="heading-7">Specification                        +</h4>
+                    </div>
+                    <div class="accordion-item-content">
+                        <dl class="dl-horizontal">
+
+                            <dt>
+                                Brand Name
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Brand_Name)
+                            </dd>
+
+                            <dt>
+                                Model Number
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Model_Number)
+                            </dd>
+
+                            <dt>
+                                Selling countries
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Selling_Countries)
+                            </dd>
+
+                            <dt>
+                                Made in
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Manufacturing_Countries)
+                            </dd>
+
+                            <dt>
+                                Screen size
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Screen_Size) Inches
+                            </dd>
+
+                            <dt>
+                                Screen techonology
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Screen_Technology)
+                            </dd>
+
+                            <dt>
+                                Energy consumption
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Comparative_Energy_Consumption) Kw
+                            </dd>
+
+                            @if (Model.Product_Website != null)
+                            {
+                                <dt>
+                                    Product website
+                                </dt>
+
+                                <dd>
+                                    <a href="@Model.Product_Website" target="_blank">@Model.Product_Website</a>
+                                </dd>
+                            }
+
+                            @if (Model.Representative_Brand_URL != null)
+                            {
+
+                                <dt>
+                                    Representative brand Url
+                                </dt>
+
+                                <dd>
+                                    <a href="@Model.Representative_Brand_URL" target="_blank">@Model.Representative_Brand_URL</a>
+                                </dd>
+                            }
+
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* code to show the similar products in grid of cards using the logic from the controller class. *@
+
+<div>
+    <h2 class="heading-5">Review Similar Products</h2>
+    <div class="container">
+        <div class="w-row">
+
+            @foreach (var item in SpList)
+            {
+                <div class="w-col w-col-4">
+                    <div class="appliance-card">
+                        <a href='@Url.Action("Details", "monitors",new { id = @item.Monitor_Id})'>
+                            @if (item.Monitor_Id % 9 == 1)
+                            {
+                                <img src='@Url.Content("~/Images/monitor1.png")' alt="Monitor" class="appliance-card-image" />
+                            }
+                            else
+                            if (item.Monitor_Id % 9 == 2)
+                            {
+                                <img src='@Url.Content("~/Images/monitor2.png")' alt="Monitor" class="appliance-card-image" />
+                            }
+                            else
+                            if (item.Monitor_Id % 9 == 3)
+                            {
+                                <img src='@Url.Content("~/Images/monitor3.png")' alt="Monitor" class="appliance-card-image" />
+                            }
+                            else
+                            if (item.Monitor_Id % 9 == 4)
+                            {
+                                <img src='@Url.Content("~/Images/monitor4.png")' alt="Monitor" class="appliance-card-image" />
+                            }
+                            else
+                            if (item.Monitor_Id % 9 == 5)
+                            {
+                                <img src='@Url.Content("~/Images/monitor5.png")' alt="Monitor" class="appliance-card-image" />
+                            }
+                            else
+                            if (item.Monitor_Id % 9 == 6)
+                            {
+                                <img src='@Url.Content("~/Images/monitor6.png")' alt="Monitor" class="appliance-card-image" />
+                            }
+                            else
+                            if (item.Monitor_Id % 9 == 7)
+                            {
+                                <img src='@Url.Content("~/Images/monitor7.png")' alt="Monitor" class="appliance-card-image" />
+                            }
+                            else
+                            if (item.Monitor_Id % 9 == 8)
+                            {
+                                <img src='@Url.Content("~/Images/monitor8.png")' alt="Monitor" class="appliance-card-image" />
+                            }
+                            else
+                            if (item.Monitor_Id % 9 == 0)
+                            {
+                                <img src='@Url.Content("~/Images/monitor9.png")' alt="Monitor" class="appliance-card-image" />
+                            }
+                        </a>
+                        <button onclick="location.href='@Url.Action("Details", "monitors",new { id = @item.Monitor_Id })'" type="button" class="appliance-card-but w-button" style="height:100px;">
+                            @item.Brand_Name: @item.Model_Number
+                        </button>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+
+
+

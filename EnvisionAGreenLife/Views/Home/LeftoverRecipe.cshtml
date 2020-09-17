@@ -1,0 +1,82 @@
+﻿@using MvcBreadCrumbs
+@{
+    ViewBag.Title = "Recipes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .btn.light.outline {
+        margin-left: -75px;
+        left: 50%;
+        top: 75%;
+        text-align: center;
+    }
+    .cards-image-2 {
+        filter: brightness(0.65);
+    }
+</style>
+
+<!-- this is the view logic page to display the results when the user clicks the leftover recipe  from the reduce waste dropdown-->
+
+<div class="page-title-section">
+    <div class="container">
+        <h1 class="page-title">Left-Over Food Recipes</h1>
+    </div>
+</div>
+
+<div class="breadcrum" style="        margin-left: 10%
+">
+    @Html.Raw(BreadCrumb.Display())
+</div>
+
+<!-- this is the logic to place all the elements like search bar, difficulty dropdown etc on the page with the card grid for different recipe category with images and names-->
+
+<section id="cards-section" class="cards-section-2">
+    <div class="centered-container-2 w-container">
+        <p style="text-align:center;">Have a go at these recipes. Easy to make, less waste, and possibly a new family favourite waiting to be discovered!</p>
+        @using (Html.BeginForm("General_search", "Food_recipes", FormMethod.Get, new { @class = "appliance-collection-search-bar w-form" }))
+        {
+            <div>
+                @Html.TextBox("SearchString", null, new { required = "", id = "search", style = "maxlength: 256;", @class = "appliance-collection-search w-input", @placeholder = "Find by name, ingredients, time..",  @autocomplete = "off" })
+                @Html.DropDownList("Difficulty", null, htmlAttributes: new { @class = "recipe-dropdown" })
+                <input type="submit" value="Search" class="appliancec-collection-search-but w-button" />
+            </div>
+        }
+
+        <div class="cards-grid-container-2">
+            <div id="w-node-53bfe8321652-e832164b">
+                <div class="cards-image-mask">
+                    <a href='@Url.Action("breakfast_recipes", "Food_recipes")'>
+                        <img src='@Url.Content("~/Images/b1.png")' alt="Breakfast" class="cards-image-2" />
+                    </a>
+                    <a href="@Url.Action("breakfast_recipes", "Food_recipes")" class="btn light outline w-button">Breakfast</a>
+                </div>
+            </div>
+            <div id="w-node-53bfe8321658-e832164b">
+                <div class="cards-image-mask">
+                    <a href='@Url.Action("lunch_recipes", "Food_recipes")'>
+                        <img src='@Url.Content("~/Images/l1.png")' alt="Lunch" class="cards-image-2" />
+                    </a>
+                    <a href="@Url.Action("lunch_recipes", "Food_recipes")" class="btn light outline w-button">Lunch</a>
+                </div>
+            </div>
+            <div id="w-node-53bfe832165d-e832164b">
+                <div class="cards-image-mask">
+                    <a href='@Url.Action("dinner_recipes", "Food_recipes")'>
+                        <img src='@Url.Content("~/Images/dinner1.png")' alt="Dinner" class="cards-image-2" />
+                    </a>
+                    <a href="@Url.Action("dinner_recipes", "Food_recipes")" class="btn light outline w-button">Dinner</a>
+                </div>
+            </div>
+            <div id="w-node-53bfe8321663-e832164b">
+                <div class="cards-image-mask">
+                    <a href='@Url.Action("dessert_recipes", "Food_recipes")'>
+                        <img src='@Url.Content("~/Images/dessert9.png")' alt="Dessert" class="cards-image-2" />
+                    </a>
+                    <a href="@Url.Action("dessert_recipes", "Food_recipes")" class="btn light outline w-button">Dessert</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
